@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "1008249357340",
+    "project_id": "sakinaacademy-72d85",
+    "storage_bucket": "sakinaacademy-72d85.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008249357340:android:52e5a9a3a2dc25b670cbd9",
+        "android_client_info": {
+          "package_name": "com.example.sakina_ac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUqY3CtwZ0TmAJTLUiQAdVPcwzcGNKuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1008249357340:android:ec908a592643ecf770cbd9",
+        "android_client_info": {
+          "package_name": "com.sakinaacademy.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZUqY3CtwZ0TmAJTLUiQAdVPcwzcGNKuo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

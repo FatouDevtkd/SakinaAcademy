@@ -1,0 +1,50 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && request.auth.token.email_verified == true
+        && request.auth.token.email in [
+          'payefatou97@gmail.com',
+          'adamambacke19@gmail.com'
+        ];
+    }
+
+    match /courses/{courseId} {
+      allow read: if isAdmin() || (signedIn() && resource.data.published == true);
+      allow create: if isAdmin()
+        && request.resource.data.title is string
+        && request.resource.data.description is string
+        && request.resource.data.type in ['audio', 'video', 'pdf']
+        && request.resource.data.storagePath is string
+        && request.resource.data.downloadUrl is string
+        && request.resource.data.published == false
+        && request.resource.data.createdBy == request.auth.uid;
+      allow update: if isAdmin()
+        && request.resource.data.createdBy == resource.data.createdBy
+        && request.resource.data.storagePath == resource.data.storagePath
+        && request.resource.data.downloadUrl == resource.data.downloadUrl;
+      allow delete: if isAdmin();
+
+      match /quizzes/{quizId} {
+        allow read: if isAdmin()
+          || (signedIn()
+            && get(/databases/$(database)/documents/courses/$(courseId)).data.published == true
+            && resource.data.published == true);
+        allow create: if isAdmin()
+          && request.resource.data.title is string
+          && request.resource.data.questions is list
+          && request.resource.data.questions.size() > 0
+          && request.resource.data.published == false
+          && request.resource.data.createdBy == request.auth.uid;
+        allow update: if isAdmin()
+          && request.resource.data.createdBy == resource.data.createdBy;
+        allow delete: if isAdmin();
+      }
+    }
+  }
+}

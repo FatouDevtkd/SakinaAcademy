@@ -1,0 +1,12 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Android : paquet Google Play",
+			"type": "shell",
+			"command": "$env:PATH = 'C:\\git-sdk-32\\cmd;' + $env:PATH; & 'C:/Users/Fatou/Flutter_programmation/flutter/bin/cache/dart-sdk/bin/dart.exe' 'C:/Users/Fatou/Flutter_programmation/flutter/bin/cache/flutter_tools.snapshot' build appbundle --release --no-pub",
+			"problemMatcher": [],
+			"group": "build"
+		}
+	]
+}
